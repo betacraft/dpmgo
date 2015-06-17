@@ -1,4 +1,6 @@
-# Defer Panic gorp add-on
+# Defer Panic mgo add-on
+
+[![wercker status](https://app.wercker.com/status/a3e0b2b98c5ac9ccaf0d96e671b68df7/s "wercker status")](https://app.wercker.com/project/bykey/a3e0b2b98c5ac9ccaf0d96e671b68df7)
 
 [![GoDoc](https://godoc.org/github.com/deferpanic/dpmgo?status.svg)](https://godoc.org/github.com/deferpanic/dpmgo)
 
@@ -29,6 +31,7 @@ type Person struct {
 }
 
 func main() {
+  // these next 2 lines capture stats
 	dps := deferstats.NewClient("v00L0K6CdKjE4QwX5DL1iiODxovAHUfo")
 	go dps.CaptureStats()
 
@@ -41,6 +44,7 @@ func main() {
 	// Optional. Switch the session to a monotonic behavior.
 	session.SetMode(mgo.Monotonic, true)
 
+  // these next 2 lines wrap your collection
 	_c := session.DB("test").C("people")
 	c := dpmgo.NewCollection(_c)
 
