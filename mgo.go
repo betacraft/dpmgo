@@ -16,7 +16,7 @@ type DpMgo struct {
 }
 
 func NewCollection(m *mgo.Collection) *DpMgo {
-	selectThreshold = -1
+	selectThreshold = 100
 
 	return &DpMgo{
 		m,
@@ -54,4 +54,11 @@ func (db *DpMgo) Find(query interface{}) *mgo.Query {
 	rquery := fmt.Sprintf("%#v", query)
 	defer db.logQuery(startTime, rquery)
 	return db.Other.Find(query)
+}
+
+func (db *DpMgo) EnsureIndexKey(key ...string) error {
+	startTime := time.Now()
+
+	defer db.logQuery(startTime, fmt.Sprintf("%#v", key))
+	return db.Other.EnsureIndexKey(key...)
 }
