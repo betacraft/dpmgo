@@ -1,0 +1,2 @@
+# dpmgo
+DeferPanic mgo package
