@@ -2,7 +2,7 @@ package dpmgo
 
 import (
 	"fmt"
-	"github.com/deferpanic/deferclient/deferstats"
+	"github.com/betacraft/deferclient/deferstats"
 	"gopkg.in/mgo.v2"
 	"time"
 )
